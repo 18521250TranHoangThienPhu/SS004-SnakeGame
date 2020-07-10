@@ -57,6 +57,26 @@ gồm các hàm định hướng lúc di chuyển, xuất hiện, di chuyển v�
             else
                 dau.y -= 2;
         }
+        void DoiHuong(int lenh, char& huong) {
+		if ((huong == 'N' || huong == 'S') && (lenh != 72 && lenh != 80)) {
+			if (lenh == 77)
+				huong = 'E';
+			if (lenh == 75)
+				huong = 'W';
+		}
+		else if ((huong == 'E' || huong == 'W') && (lenh != 77 && lenh != 75)) {
+			if (lenh == 72)
+				huong = 'N';
+			if (lenh == 80)
+				huong = 'S';
+		}
+        }
+        void DiChuyenThan();
+        void DiChuyenDau();
+        void DiChuyen();
+        void XuatHien();
+        void DaAnMoi();
+
 
 };
 struct MOI {};
