@@ -9,30 +9,56 @@
 using namespace std;
 
 struct DIEM {
-int x, y;
-	DIEM() {
-		x = 0;
-		y = 0;
-	}
-	DIEM(int a, int b) {
-		x = a;
-		y = b;
-	}
-	DIEM operator - (DIEM d2) {
-		DIEM d;
-		d.x = x - d2.x;
-		d.y = y - d2.y;
-		return d;
-	}
-	bool operator == (DIEM d2) {
-		return (x == d2.x && y == d2.y);
-	}
+    int x, y;
+        DIEM() {
+            x = 0;
+            y = 0;
+        }
+        DIEM(int a, int b) {
+            x = a;
+            y = b;
+        }
+        DIEM operator - (DIEM d2) {
+            DIEM d;
+            d.x = x - d2.x;
+            d.y = y - d2.y;
+            return d;
+        }
+        bool operator == (DIEM d2) {
+            return (x == d2.x && y == d2.y);
+        }
 };
 /*Biểu diễn tọa độ các thành phần
 gồm các hàm khởi tạo, phép kiểm tra trùng, lấy hiệu 2 điểm.*/
-struct RAN {};
+struct RAN {
 /*Biểu diễn rắn
 gồm các hàm định hướng lúc di chuyển, xuất hiện, di chuyển và ăn mồi*/
+    int ChieuDai;
+        vector<DIEM> ToaDo;
+        DIEM duoitruoc;
+        char XacDinhPhuongHuong(DIEM a, DIEM b) {
+            DIEM huong = a - b;
+            if (huong.x == 0 && huong.y == 2)
+                return 'E';
+            else if (huong.x == 0 && huong.y == -2)
+                return 'W';
+            else if (huong.x == 1 && huong.y == 0)
+                return 'S';
+            else
+                return 'N';
+	}
+        void DiThang(DIEM& dau, char huong) {
+            if (huong == 'N')
+                dau.x--;
+            else if (huong == 'S')
+                dau.x++;
+            else if (huong == 'E')
+                dau.y += 2;
+            else
+                dau.y -= 2;
+        }
+
+};
 struct MOI {};
 /*Biểu diễn vị trí mồi
 gồm các hàm xuất hiện, kiểm tra vị trí của mồi khi xuất hiện, bị rắn ăn*/
